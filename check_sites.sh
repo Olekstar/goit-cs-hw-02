@@ -11,7 +11,7 @@ logfile="website_status.log"
 
 # Функція для перевірки сайту
 check_site() {
-    if curl -s --head  --request GET $1 | grep "200 OK" > /dev/null; then 
+    if curl -s --head  --request GET $1; then 
         echo "$1 is UP"
         echo "$1 is UP" >> $logfile
     else
