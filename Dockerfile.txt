@@ -1,0 +1,15 @@
+# Використовуйте офіційний образ Python як базовий
+FROM python:3.9
+
+# Встановіть робочий каталог в контейнері
+WORKDIR /app
+
+# Копіюйте вимоги проекту та встановіть залежності
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Копіюйте весь проект у контейнер
+COPY . .
+
+# Вкажіть команду для запуску застосунку
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
